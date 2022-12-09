@@ -1,0 +1,21 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Trace {
+  """Example field (placeholder)"""
+  ip: String!
+}
+
+type Query {
+  traces: [Trace!]!
+}
+
+type Mutation {
+  createTrace(createTraceInput: CreateTraceInput!): Trace!
+}
+
+input CreateTraceInput {
+  """IP to be traced"""
+  ip: String!
+}
