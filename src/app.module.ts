@@ -5,6 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { join } from 'path';
 import { TracesModule } from './traces/traces.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { StatisticsModule } from './statistics/statistics.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       inject: [ConfigService],
     }),
     TracesModule,
+    StatisticsModule,
   ],
 })
 export class AppModule {}

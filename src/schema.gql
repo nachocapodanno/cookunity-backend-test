@@ -2,13 +2,58 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Currency {
+  """Currency ISO"""
+  iso: String!
+
+  """Currency symbol"""
+  symbol: String!
+
+  """Country conversion rate against USD"""
+  conversionRate: String!
+}
+
 type Trace {
-  """Example field (placeholder)"""
+  """IP requested"""
   ip: String!
+
+  """Country name"""
+  name: String!
+
+  """Country code"""
+  code: String!
+
+  """Country latitude"""
+  lat: Float!
+
+  """Country longitude"""
+  long: Float!
+
+  """Currencies data"""
+  currencies: [Currency!]!
+
+  """Distance to USA"""
+  distanceToUsa: Float!
+}
+
+type StatisticData {
+  """Country name"""
+  country: String!
+
+  """Statistic value"""
+  value: Float!
+}
+
+type Statistic {
+  """Statistic longest distance data"""
+  longestDistance: StatisticData!
+
+  """Statistic most traced data"""
+  mostTraced: StatisticData!
 }
 
 type Query {
-  traces: [Trace!]!
+  statistics: Statistic!
 }
 
 type Mutation {
