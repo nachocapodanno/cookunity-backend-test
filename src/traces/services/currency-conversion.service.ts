@@ -12,6 +12,7 @@ export const USD_CURRENCY_DATA = {
 export class CurrencyConversionService {
   private apiURL: string;
 
+  // TODO: implement an interface for API Client calls.
   constructor(
     private readonly httpService: HttpService,
     private readonly configService: ConfigService,

@@ -17,6 +17,7 @@ enum API_STATUS {
 export class GeolocalizationService {
   private apiURL: string;
 
+  // TODO: implement an interface for API Client calls.
   constructor(
     private readonly httpService: HttpService,
     private readonly configService: ConfigService,
