@@ -20,7 +20,7 @@ import { StatisticsModule } from './statistics/statistics.module';
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
-        uri: configService.get('MONGO_URI'),
+        uri: configService.get('MONGO_URI') || process.env.MONGO_URI,
       }),
       inject: [ConfigService],
     }),
