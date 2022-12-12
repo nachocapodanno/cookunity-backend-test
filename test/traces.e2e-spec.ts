@@ -109,8 +109,9 @@ describe('TracesResolver (e2e)', () => {
         }`,
       })
       .expect(200)
-      .expect({
-        data: {
+      .expect(({ body }) => {
+        const { data } = body;
+        expect(data).toMatchObject({
           createTrace: {
             ip: '190.189.205.232',
             name: 'Argentina',
@@ -121,7 +122,6 @@ describe('TracesResolver (e2e)', () => {
               {
                 iso: 'ARS',
                 symbol: 'Argentine Peso',
-                conversionRate: '0.005878',
               },
               {
                 iso: 'USD',
@@ -131,7 +131,7 @@ describe('TracesResolver (e2e)', () => {
             ],
             distanceToUsa: 8509.69,
           },
-        },
+        });
       });
   });
 });
