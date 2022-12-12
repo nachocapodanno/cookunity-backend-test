@@ -8,6 +8,8 @@ import { StatisticsService } from './statistics.service';
 import { ConfigService } from '@nestjs/config';
 import { CurrencyConversionService } from '../traces/services/currency-conversion.service';
 import { HttpModule } from '@nestjs/axios';
+import { CacheService } from '../cache/cache.service';
+import { CACHE_MANAGER } from '@nestjs/common';
 
 describe('StatisticsResolver', () => {
   let resolver: StatisticsResolver;
@@ -21,7 +23,15 @@ describe('StatisticsResolver', () => {
         GeolocalizationService,
         CurrencyConversionService,
         ConfigService,
+        CacheService,
         { provide: getModelToken(Trace.name), useValue: {} },
+        {
+          provide: CACHE_MANAGER,
+          useValue: {
+            get: () => 'any value',
+            set: () => jest.fn(),
+          },
+        },
       ],
       imports: [HttpModule],
     }).compile();

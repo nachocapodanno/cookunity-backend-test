@@ -1,7 +1,9 @@
 import { HttpModule } from '@nestjs/axios';
+import { CACHE_MANAGER } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Test, TestingModule } from '@nestjs/testing';
+import { CacheService } from '../../../cache/cache.service';
 import {
   closeInMongodConnection,
   rootMongooseTestModule,
@@ -35,6 +37,14 @@ describe('TracesService', () => {
         {
           provide: CurrencyConversionService,
           useValue: currencyMock,
+        },
+        CacheService,
+        {
+          provide: CACHE_MANAGER,
+          useValue: {
+            get: () => undefined,
+            set: () => jest.fn(),
+          },
         },
       ],
       imports: [

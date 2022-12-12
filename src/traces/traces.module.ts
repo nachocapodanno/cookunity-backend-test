@@ -1,11 +1,12 @@
+import { HttpModule } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
+import { CacheService } from '../cache/cache.service';
+import { Trace, TraceSchema } from './schema/trace.schema';
+import { CurrencyConversionService } from './services/currency-conversion.service';
+import { GeolocalizationService } from './services/geolocalization.service';
 import { TracesService } from './services/traces.service';
 import { TracesResolver } from './traces.resolver';
-import { Trace, TraceSchema } from './schema/trace.schema';
-import { MongooseModule } from '@nestjs/mongoose';
-import { GeolocalizationService } from './services/geolocalization.service';
-import { HttpModule } from '@nestjs/axios';
-import { CurrencyConversionService } from './services/currency-conversion.service';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { CurrencyConversionService } from './services/currency-conversion.servic
     TracesService,
     GeolocalizationService,
     CurrencyConversionService,
+    CacheService,
   ],
   exports: [TracesService],
 })
