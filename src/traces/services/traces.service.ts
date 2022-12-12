@@ -64,7 +64,6 @@ export class TracesService {
 
     if (!symbol) {
       // TODO: alternatively, save this in DB. Use a cron for keeping it up to date each period of time.
-      console.log('API');
       const { symbols } = await this.currencyConversionService.getSymbols();
       await this.cacheService.add(CACHE_SYMBOLS_KEY, symbols, NO_EXPIRATION);
       symbol = symbols[currency];

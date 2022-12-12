@@ -63,6 +63,9 @@ $ npm run test
 $ npm run test:e2e
 ```
 
+## Playground GraphQL
+http://localhost:3000/graphql
+
 ## Author
 
   Ignacio Capodanno
